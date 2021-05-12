@@ -14,7 +14,5 @@ export function isObject(val: any): val is Record<any, any> {
   return val !== null && is(val, 'Object')
 }
 export function isPromise<T = any>(val: unknown): val is Promise<T> {
-  return (
-    is(val, 'Promise')
-  )
+  return is(val, 'Promise')
 }
