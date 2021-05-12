@@ -7,16 +7,20 @@ export interface OkI18nOptions {
 	messages: {
 		[locale: string]: Message | AsyncImportFunction
 	}
+  variableRegExp?: RegExp
 }
 type Variables = Record<string, string | number> | undefined
-const formatReg = /\{([0-9a-zA-Z_]+)\}/g
 export class OkI18n {
 	public locale!: string
 	private _messageCache: Map<string, string | undefined> = new Map()
 	private messages: Message = {}
 	private _messages: OkI18nOptions['messages']
+  private variableRegExp: RegExp = /\{([0-9a-zA-Z_]+)\}/g
 	constructor(options: OkI18nOptions) {
 		this._messages = Object.freeze(options.messages)
+    if (options.variableRegExp) {
+      this.variableRegExp = options.variableRegExp
+    }
     this.setLocale(options.locale)
 	}
 
@@ -83,7 +87,7 @@ export class OkI18n {
 		if (!variables) {
 			return message
 		}
-		return message.replace(formatReg, (text: string, $1: string) => {
+		return message.replace(this.variableRegExp, (text: string, $1: string) => {
 			const value = variables[$1]
 			return value !== undefined ? String(value) : text
 		})
