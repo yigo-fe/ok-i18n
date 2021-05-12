@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/yigo-fe/ok-i18n/compare/v1.0.0...v1.0.1) (2021-05-12)
+
+
+### Features
+
+* 添加variableRegExp参数 ([d928908](https://github.com/yigo-fe/ok-i18n/commit/d9289089408f8afd5634b9d2f19f2246be786c79))
+
 ## 1.0.0 (2021-05-12)
 
 
