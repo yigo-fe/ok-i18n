@@ -1,4 +1,4 @@
-## ok-i18n
+# ok-i18n
 
 
 ## 安装方式
@@ -9,6 +9,7 @@ yarn add ok-i18n
 
 ## 使用方式
 ### Vue3项目
+
 ```typescript
 import { createI18n } from 'ok-i18n'
 
@@ -31,7 +32,8 @@ const i18n = createI18n({
 
 const app = createApp(App).use(i18n)
 ```
-在Vue3组件中
+#### 在Vue3组件中
+
 ```vue
 <template>
   <div>{{ $t('language', '中文') }}</div>
@@ -51,7 +53,6 @@ export default defineComponent({
 })
 </script>
 ```
-
 
 ### 在非Vue3项目中
 
@@ -73,3 +74,45 @@ const i18n = new OkI18n({
 
 const text = i18n.$t('language', '中文')
 ```
+
+### 使用变量
+
+```typescript
+import { OkI18n } from 'ok-i18n'
+
+const messages = {
+  enUs: {
+    language: 'English {variable}'
+  },
+  jaJP: {
+    language: ' {variable} 日本語'
+  }
+}
+const i18n = new OkI18n({
+  locale: 'zh-CN',
+  messages
+})
+
+const text = i18n.$t('language', '中文 {variable}', { variable: '变量' })
+```
+
+
+
+## API
+
+### OkI18nOptions
+
+| 参数名称       | 是否必填 | 默认值                 | 可选值 | 描述                              | 版本  |
+| -------------- | -------- | ---------------------- | ------ | --------------------------------- | ----- |
+| locale         | 是       |                        |        | 设置语言                          | 1.0.0 |
+| messages       | 是       |                        |        | 需要和语言相对应，如zh-CN对应zhCN | 1.0.0 |
+| variableRegExp | 否       | /\{([0-9a-zA-Z_]+)\}/g |        |                                   | 1.0.1 |
+
+### OkI18n实例方法和属性
+
+| 名称      | 方法/属性 | 类型                                                         | 描述                                                         | 版本  |
+| --------- | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----- |
+| locale    | 属性      | string                                                       | options中设置的语言                                          | 1.0.0 |
+| $t        | 方法      | (path: string, fallback: string, variables?: Record<string, string \| number>): string | 获取翻译文案，当获取不到时会采用fallback，如果传入variables，会对获取到的文案或者fallback都生效 | 1.0.0 |
+| setLocale | 方法      | (locale: string): void                                       | 设置语言                                                     | 1.0.0 |
+
