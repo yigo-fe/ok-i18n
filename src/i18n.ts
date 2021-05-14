@@ -2,11 +2,12 @@ import { isPromise, isString } from './utils'
 type Message = Record<string, any>
 type PromiseMessage = Promise<Message>
 type AsyncImportFunction = () => PromiseMessage
+type Messages = {
+  [locale: string]: Message | AsyncImportFunction
+}
 export interface OkI18nOptions {
   locale: string
-  messages: {
-    [locale: string]: Message | AsyncImportFunction
-  }
+  messages?: Messages
   variableRegExp?: RegExp
 }
 type Variables = Record<string, string | number> | undefined
@@ -14,10 +15,13 @@ export class OkI18n {
   public locale!: string
   private _messageCache: Map<string, string | undefined> = new Map()
   private messages: Message = {}
-  private _messages: OkI18nOptions['messages']
+  private _messages: Messages
   private variableRegExp: RegExp = /\{([0-9a-zA-Z_]+)\}/g
   constructor(options: OkI18nOptions) {
-    this._messages = Object.freeze(options.messages)
+    // 优先取options.messages 如果options中没有配置，则取window.okI18nPreImport，预加载的数据，否则取空对象
+    this._messages = Object.freeze(
+      options.messages ?? window.okI18nPreImport ?? {}
+    )
     if (options.variableRegExp) {
       this.variableRegExp = options.variableRegExp
     }

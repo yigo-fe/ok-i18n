@@ -7,10 +7,13 @@
   "scripts": {
     "prebuild": "npm run test",
     "build": "rimraf lib && tsc",
+    "postbuild": "npm run uglify",
     "lint": "prettier --config --write src",
+    "uglify": "uglifyjs ./lib/asyncImportI18n/index.js -c -m --mangle-props -o ./lib/asyncImportI18n/index.min.js",
     "patch": "npm run build && standard-version -i changelog.md -r patch -a",
     "minor": "npm run build && standard-version -i changelog.md -r minor -a",
     "release": "npm run build && standard-version -i changelog.md -r major -a",
+    "cdn-upload": "ego-fe-oss-client -d ./lib/asyncImportI18n -s LIB -p ok-i18n/asyncImportI18n",
     "test": "jest",
     "test-c": "jest --coverage"
   },
@@ -47,7 +50,8 @@
     "standard-version": "^9.1.1",
     "ts-jest": "^26.5.2",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "uglify-js": "^3.13.6"
   },
   "dependencies": {
     "vue": "^3.0.11"
