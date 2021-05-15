@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/yigo-fe/ok-i18n/compare/v2.0.1...v2.0.2) (2021-05-15)
+
+
+### Features
+
+* cdn upload添加版本号 ([b876924](https://github.com/yigo-fe/ok-i18n/commit/b87692437a84c6f30645122d87b48dab4fa18264))
+
 ### [2.0.1](https://github.com/yigo-fe/ok-i18n/compare/v2.0.0...v2.0.1) (2021-05-15)
 
 
