@@ -9,7 +9,7 @@
     "build": "rimraf lib && tsc",
     "postbuild": "npm run uglify",
     "lint": "prettier --config --write src",
-    "uglify": "uglifyjs ./lib/asyncImportI18n/index.js -c -m --mangle-props -o ./lib/asyncImportI18n/index.min.js",
+    "uglify": "uglifyjs ./lib/asyncImportI18n/index.js -c -o ./lib/asyncImportI18n/index.min.js",
     "patch": "npm run build && standard-version -i changelog.md -r patch -a",
     "minor": "npm run build && standard-version -i changelog.md -r minor -a",
     "release": "npm run build && standard-version -i changelog.md -r major -a",
