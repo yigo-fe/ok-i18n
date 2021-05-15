@@ -26,6 +26,9 @@ interface Window {
     script.src = src
     return script
   }
+  function setDocumentLang(locale: string) {
+    document.documentElement.lang = locale
+  }
   function insertCurrentScriptAfter(
     newNode: HTMLElement,
     refNode: HTMLElement
@@ -39,7 +42,7 @@ interface Window {
     defaultLocale: 'zh-CN',
   }
   function getOptions(el: HTMLElement | null): typeof DEFAULT_OPTIONS {
-    return Object.assign({}, DEFAULT_OPTIONS, el?.dataset)
+    return Object.assign({}, DEFAULT_OPTIONS, el ? el.dataset : {})
   }
   const currentScript = getCurrentScript()
   const options = getOptions(currentScript)
@@ -52,6 +55,7 @@ interface Window {
         [localeKey]: messages,
       }
     }
+    setDocumentLang(locale)
     insertCurrentScriptAfter(script, currentScript)
   }
 })(window)

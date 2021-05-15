@@ -7,7 +7,7 @@
   "scripts": {
     "prebuild": "npm run test",
     "build": "rimraf lib && tsc",
-    "postbuild": "npm run uglify",
+    "postbuild": "npm run uglify && npm run cdn-upload",
     "lint": "prettier --config --write src",
     "uglify": "uglifyjs ./lib/asyncImportI18n/index.js -c -m --mangle-props -o ./lib/asyncImportI18n/index.min.js",
     "patch": "npm run build && standard-version -i changelog.md -r patch -a",
