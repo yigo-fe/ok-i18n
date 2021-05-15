@@ -12,7 +12,7 @@ if (!shell.which('ego-fe-oss-client')) {
 
 if (
   shell.exec(
-    `ego-fe-oss-client -d ./lib/asyncImportI18n/${version} -s LIB -p ok-i18n/asyncImportI18n`
+    `ego-fe-oss-client -d ./lib/asyncImportI18n -s LIB -p ok-i18n/${version}/asyncImportI18n`
   ).code !== 0
 ) {
   shell.echo('Error: Git commit failed')
