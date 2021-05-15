@@ -7,19 +7,20 @@
   "scripts": {
     "prebuild": "npm run test",
     "build": "rimraf lib && tsc",
-    "postbuild": "npm run uglify && npm run cdn-upload",
+    "postbuild": "npm run uglify",
     "lint": "prettier --config --write src",
     "uglify": "uglifyjs ./lib/asyncImportI18n/index.js -c -m --mangle-props -o ./lib/asyncImportI18n/index.min.js",
     "patch": "npm run build && standard-version -i changelog.md -r patch -a",
     "minor": "npm run build && standard-version -i changelog.md -r minor -a",
     "release": "npm run build && standard-version -i changelog.md -r major -a",
-    "cdn-upload": "ego-fe-oss-client -d ./lib/asyncImportI18n -s LIB -p ok-i18n/asyncImportI18n",
+    "cdn-upload": "node ./cdn-upload.js",
     "test": "jest",
     "test-c": "jest --coverage"
   },
   "standard-version": {
     "scripts": {
-      "prerelease": "node ./preVersion.js"
+      "prerelease": "node ./preVersion.js",
+      "postbump": "npm run cdn-upload"
     }
   },
   "repository": {
