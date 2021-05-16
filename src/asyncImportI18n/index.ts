@@ -26,10 +26,18 @@ interface Window {
     script.src = src
     return script
   }
+  function createStyleNode(text: string) {
+    if (!text) {
+      return null
+    }
+    const style = document.createElement('style')
+    style.innerText = text
+    return style
+  }
   function setDocumentLang(locale: string) {
     document.documentElement.lang = locale
   }
-  function insertCurrentScriptAfter(
+  function insertNodeAfterCurrentScript(
     newNode: HTMLElement,
     refNode: HTMLElement
   ) {
@@ -41,6 +49,9 @@ interface Window {
     localeKey: 'local',
     defaultLocale: 'zh-CN',
   }
+  const FONT_FAMILY: Record<string, string> = {
+    'ja-JP': `html:lang(ja-JP) body{font-family: "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", Osaka, sans-serif;}`,
+  }
   function getOptions(el: HTMLElement | null): typeof DEFAULT_OPTIONS {
     return Object.assign({}, DEFAULT_OPTIONS, el ? el.dataset : {})
   }
@@ -48,6 +59,7 @@ interface Window {
   const options = getOptions(currentScript)
   const locale = getCookie(options.localeKey) ?? options.defaultLocale
   const script = createScriptNode(options.baseUrl + locale + '.js')
+  const style = createStyleNode(FONT_FAMILY[locale])
   const localeKey = locale.replace('-', '')
   if (currentScript) {
     window.importOkI18nMessage = (messages: Record<string, any>) => {
@@ -56,6 +68,9 @@ interface Window {
       }
     }
     setDocumentLang(locale)
-    insertCurrentScriptAfter(script, currentScript)
+    insertNodeAfterCurrentScript(script, currentScript)
+    if (style) {
+      insertNodeAfterCurrentScript(style, currentScript)
+    }
   }
 })(window)
