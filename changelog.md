@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/yigo-fe/ok-i18n/compare/v2.0.2...v2.0.3) (2021-05-16)
+
+
+### Features
+
+* 动态添加日文fontFamily style ([009d7d1](https://github.com/yigo-fe/ok-i18n/commit/009d7d1c24700312d72c0e42ca92fb18800dcb23))
+* 修改cdn-upload ([f23c7e8](https://github.com/yigo-fe/ok-i18n/commit/f23c7e8b296532e0adc7fc2f5dc6c06c5fd29199))
+* 修改uglify混淆代码问题 ([dc1b8fe](https://github.com/yigo-fe/ok-i18n/commit/dc1b8fe571b7ab401ff2593f44263853745ff011))
+
 ### [2.0.2](https://github.com/yigo-fe/ok-i18n/compare/v2.0.1...v2.0.2) (2021-05-15)
 
 
