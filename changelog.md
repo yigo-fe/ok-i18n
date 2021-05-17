@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/yigo-fe/ok-i18n/compare/v2.0.3...v2.1.0) (2021-05-17)
+
+
+### Features
+
+* 修改preImport ([0b2c0ef](https://github.com/yigo-fe/ok-i18n/commit/0b2c0ef79cb7d418851424e484a844a0282d6199))
+
 ### [2.0.3](https://github.com/yigo-fe/ok-i18n/compare/v2.0.2...v2.0.3) (2021-05-16)
 
 
