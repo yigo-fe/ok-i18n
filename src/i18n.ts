@@ -20,7 +20,7 @@ export class OkI18n {
   constructor(options: OkI18nOptions) {
     // 优先取options.messages 如果options中没有配置，则取window.okI18nPreImport，预加载的数据，否则取空对象
     this._messages = Object.freeze(
-      options.messages ?? window.okI18nPreImport ?? {}
+      options.messages ?? this.getPreImport() ?? {}
     )
     if (options.variableRegExp) {
       this.variableRegExp = options.variableRegExp
@@ -95,6 +95,15 @@ export class OkI18n {
       const value = variables[$1]
       return value !== undefined ? String(value) : text
     })
+  }
+
+  getPreImport() {
+    if (window.okI18nPreImport) {
+      if (window.okI18nPreImport.hasOwnProperty(this.localeInMessageKey)) {
+        return window.okI18nPreImport
+      }
+      return { [this.localeInMessageKey]: window.okI18nPreImport }
+    }
   }
 
   getPathArray(path: string): string[] {

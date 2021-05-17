@@ -58,17 +58,9 @@ interface Window {
   const currentScript = getCurrentScript()
   const options = getOptions(currentScript)
   const locale = getCookie(options.localeKey) ?? options.defaultLocale
-  const script = createScriptNode(options.baseUrl + locale + '.js')
   const style = createStyleNode(FONT_FAMILY[locale])
-  const localeKey = locale.replace('-', '')
   if (currentScript) {
-    window.importOkI18nMessage = (messages: Record<string, any>) => {
-      window.okI18nPreImport = {
-        [localeKey]: messages,
-      }
-    }
     setDocumentLang(locale)
-    insertNodeAfterCurrentScript(script, currentScript)
     if (style) {
       insertNodeAfterCurrentScript(style, currentScript)
     }
