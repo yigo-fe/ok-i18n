@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/yigo-fe/ok-i18n/compare/v2.1.1...v2.1.2) (2021-05-24)
+
+
+### Features
+
+* 给preImport功能添加env=development时加载script，否则使用nginx代理添加的script ([50fdb49](https://github.com/yigo-fe/ok-i18n/commit/50fdb4930f975e3a2afe1e615d84cc32a006014c))
+
 ### [2.1.1](https://github.com/yigo-fe/ok-i18n/compare/v2.1.0...v2.1.1) (2021-05-17)
 
 
