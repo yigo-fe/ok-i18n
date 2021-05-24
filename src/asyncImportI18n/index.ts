@@ -48,6 +48,7 @@ interface Window {
     baseUrl: '/',
     localeKey: 'local',
     defaultLocale: 'zh-CN',
+    env: 'production',
   }
   const FONT_FAMILY: Record<string, string> = {
     'ja-JP': `html:lang(ja-JP) body{font-family: "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", Osaka, sans-serif;}`,
@@ -61,6 +62,10 @@ interface Window {
   const style = createStyleNode(FONT_FAMILY[locale])
   if (currentScript) {
     setDocumentLang(locale)
+    if (options.env === 'development') {
+      const script = createScriptNode(options.baseUrl + locale + '.js')
+      insertNodeAfterCurrentScript(script, currentScript)
+    }
     if (style) {
       insertNodeAfterCurrentScript(style, currentScript)
     }
