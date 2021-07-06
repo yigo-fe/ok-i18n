@@ -49,6 +49,7 @@ interface Window {
     localeKey: 'local',
     defaultLocale: 'zh-CN',
     env: 'production',
+    cookie: false,
   }
   const FONT_FAMILY: Record<string, string> = {
     'ja-JP': `html:lang(ja-JP) body{font-family: "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", Osaka, sans-serif;}`,
@@ -58,7 +59,10 @@ interface Window {
   }
   const currentScript = getCurrentScript()
   const options = getOptions(currentScript)
-  const locale = getCookie(options.localeKey) ?? options.defaultLocale
+  const locale =
+    (options.cookie
+      ? getCookie(options.localeKey)
+      : localStorage.getItem(options.localeKey)) ?? options.defaultLocale
   const style = createStyleNode(FONT_FAMILY[locale])
   if (currentScript) {
     setDocumentLang(locale)
