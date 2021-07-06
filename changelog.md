@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/yigo-fe/ok-i18n/compare/v2.1.2...v2.2.0) (2021-07-06)
+
+
+### Features
+
+* asyncImportI18n可以使用localStorage ([15acc66](https://github.com/yigo-fe/ok-i18n/commit/15acc6641b3059ca0eebe376b5927264493dcf3a))
+
 ### [2.1.2](https://github.com/yigo-fe/ok-i18n/compare/v2.1.1...v2.1.2) (2021-05-24)
 
 
