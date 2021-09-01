@@ -1,6 +1,6 @@
 {
   "name": "ok-i18n",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -54,8 +54,7 @@
     "typescript": "^4.1.3",
     "uglify-js": "^3.13.6"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
