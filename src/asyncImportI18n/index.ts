@@ -62,7 +62,7 @@ interface Window {
   const locale =
     (options.cookie
       ? getCookie(options.localeKey)
-      : localStorage.getItem(options.localeKey)) ?? options.defaultLocale
+      : window.localStorage.getItem(options.localeKey)) ?? options.defaultLocale
   const style = createStyleNode(FONT_FAMILY[locale])
   if (currentScript) {
     setDocumentLang(locale)
